@@ -175,6 +175,9 @@ LIMIT 5;
 
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/09ab3263-713e-48ee-9d83-45d003c39bb5)
 
+![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/1046022d-9b1e-4d15-9a26-5ef1807984ed)
+
+
 ~ Flipkart customer received has the highest average discount of 31%,Viveks,Croma,Ezone received an average discount of 30% while Amazon received 29% discount.
 
 **Question Seven**
@@ -187,7 +190,7 @@ The final report contains these columns: Month Year Gross sales Amount
 SELECT 
 extract( month from fact_sales.date) AS month,
 extract( year from fact_sales.date) AS year,
-round(SUM(fact_gross.gross_price * fact_sales.sold_quantity),2) AS Gross_sales_amount
+round(SUM(fact_gross.gross_price * fact_sales.sold_quantity)/1000000,2) AS Gross_sales_amount
 FROM `fact_sales_monthly` AS fact_sales
 INNER JOIN `fact_gross_price` AS fact_gross
 ON fact_sales.fiscal_year=fact_gross.fiscal_year
@@ -200,9 +203,9 @@ month,
 year;
 ```
 
-![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/76e5fe50-82e1-4d24-9b01-92208a0c0671)
+![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/9287be23-6f1d-4102-9473-89e8e13012d1)
 
-![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/c550bede-f9bc-4223-9c0f-4ec7f5b83415)
+![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/4cf8b017-de73-4518-84cc-f0b1e813319b)
 
 ~ Atliq Exclusive 2009 recorded high sales in November and low sales in September as they began their operations. In 2020 it recorded high sales in the 4th quarter of the year, with high sales in November and low in March. In 2021 it recorded high sales in January and the lowest in August.
 
@@ -222,7 +225,10 @@ ORDER BY total_sold_quantity DESC;
 
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/04989829-f728-4784-9e0a-362fa3f353e1)
 
-~ The first quarter of recorded high sales followed by the fourth quarter.
+![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/5ecc521d-aa38-4c31-bedd-832be653048b)
+
+
+~ The first quarter of recorded high quantity of goods sold followed by the fourth quarter.
 
 + the QUARTER() function is used to derive the quarter from the date column. Since the fiscal year for Atliq Hardware starts from September, 
 we need to subtract 9 months from the date to align it with the calendar year
@@ -238,7 +244,7 @@ The final output contains these fields, channel gross_sales_mln percentage
 WITH channel_sales AS(
 SELECT 
 dim_customer.channel,
-round(SUM(fact_gross.gross_price * fact_sales.sold_quantity),2) AS gross_sales_mln
+round(SUM(fact_gross.gross_price * fact_sales.sold_quantity)/1000000,2) AS gross_sales_mln
 FROM `fact_sales_monthly` AS fact_sales
 INNER JOIN `fact_gross_price` AS fact_gross
 ON fact_sales.fiscal_year=fact_gross.fiscal_year
@@ -258,7 +264,7 @@ WHERE gross_sales_mln = (SELECT MAX(gross_sales_mln) FROM channel_sales)
 ;
 ```
 
-![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/e8079122-2417-4e78-811a-6455096d6ed7)
+![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/d8dca171-9610-4887-9145-da595bb00a5d)
 
 ~ Retailer channel generated more sales in 2021 with 73.23%
 
