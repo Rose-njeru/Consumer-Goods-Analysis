@@ -70,7 +70,7 @@ GROUP BY market;
 
 **Question Two**
 
-What is the percentage of unique product increase in 2021 vs. 2020? The final output contains these fields, unique_products_2020 unique_products_2021 percentage_chg*/
+What is the percentage of unique product increase in 2021 vs. 2020? The final output contains these fields, unique_products_2020 unique_products_2021 percentage_chg
 ```sql
 SELECT
 COUNT(DISTINCT CASE WHEN fiscal_year = 2020 THEN product_code END) AS unique_products_2020,
@@ -85,7 +85,7 @@ FROM `fact_sales_monthly`;
 **Question Three**
 
 Provide a report with all the unique product counts for each segment and sort them in descending order of product counts.
-The final output contains 2 fields, segment product_count*/
+The final output contains 2 fields, segment product_count
 ``` sql
 SELECT 
 DISTINCT COUNT(product_code) AS product_count,
@@ -102,7 +102,7 @@ ORDER BY product_count DESC;
 **Question Four**
 
 Follow-up from Question 3:Which segment had the most increase in unique products in 2021 vs 2020? 
-The final output contains these fields, segment product_count_2020 product_count_2021 difference*/
+The final output contains these fields, segment product_count_2020 product_count_2021 difference
 ``` sql
 SELECT 
 segment,
@@ -123,7 +123,7 @@ ORDER BY difference DESC;
 **Question Five**
 
 Get the products that have the highest and lowest manufacturing costs. 
-The final output should contain these fields, product_code product manufacturing_cost*/
+The final output should contain these fields, product_code product manufacturing_cost
 ```sql
 SELECT
 dim_product.product_code,
@@ -154,7 +154,7 @@ fact_manufacture.manufacturing_cost DESC;
 **Question Six**
 
 Generate a report which contains the top 5 customers who received an average high pre_invoice_discount_pct for the fiscal year 2021 and in the Indian market.
-The final output contains these fields, customer_code customer average_discount_percentage*/
+The final output contains these fields, customer_code customer average_discount_percentage
 ``` sql
 SELECT
 dim_customer.customer_code,
@@ -181,8 +181,8 @@ LIMIT 5;
 
 Get the complete report of the Gross sales amount for the customer “Atliq Exclusive” for each month. 
 This analysis helps to get an idea of low and high-performing months and take strategic decisions.
-The final report contains these columns: Month Year Gross sales Amount*/
--- Gross sales Amount = gross_price * sold_quantity
+The final report contains these columns: Month Year Gross sales Amount
++ Gross sales Amount = gross_price * sold_quantity
 ``` sql
 SELECT 
 extract( month from fact_sales.date) AS month,
@@ -204,4 +204,103 @@ year;
 
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/c550bede-f9bc-4223-9c0f-4ec7f5b83415)
 
-~ 
+~ Atliq Exclusive 2009 recorded high sales in November and low sales in September as they began their operations. In 2020 it recorded high sales in the 4th quarter of the year, with high sales in November and low in March. In 2021 it recorded high sales in January and the lowest in August.
+
+**Question Eight**
+
+In which quarter of 2020, got the maximum total_sold_quantity? 
+The final output contains these fields sorted by the total_sold_quantity, Quarter total_sold_quantity
+```sql
+SELECT
+QUARTER(DATE_SUB(date, INTERVAL 9 MONTH)) AS quarter,
+SUM(sold_quantity) AS total_sold_quantity
+FROM `fact_sales_monthly`
+WHERE fiscal_year = 2020
+GROUP BY quarter
+ORDER BY total_sold_quantity DESC;
+```
+
+![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/04989829-f728-4784-9e0a-362fa3f353e1)
+
+~ The first quarter of recorded high sales followed by the fourth quarter.
+
++ the QUARTER() function is used to derive the quarter from the date column. Since the fiscal year for Atliq Hardware starts from September, 
+we need to subtract 9 months from the date to align it with the calendar year
+
+**Question 9**
+
+Which channel helped to bring more gross sales in the fiscal year 2021 and the percentage of contribution? 
+The final output contains these fields, channel gross_sales_mln percentage
+
++  gross_sales_mln = gross_price * sold_quantity
+
+```sql
+WITH channel_sales AS(
+SELECT 
+dim_customer.channel,
+round(SUM(fact_gross.gross_price * fact_sales.sold_quantity),2) AS gross_sales_mln
+FROM `fact_sales_monthly` AS fact_sales
+INNER JOIN `fact_gross_price` AS fact_gross
+ON fact_sales.fiscal_year=fact_gross.fiscal_year
+AND fact_sales.product_code=fact_gross.product_code
+INNER JOIN `dim_customer` AS dim_customer
+ON fact_sales.customer_code=dim_customer.customer_code
+WHERE fact_sales.fiscal_year=2021
+GROUP BY
+dim_customer.channel
+)
+SELECT 
+channel,
+gross_sales_mln,
+gross_sales_mln / (SELECT SUM(gross_sales_mln) FROM channel_sales) *100 AS percentage
+FROM channel_sales
+WHERE gross_sales_mln = (SELECT MAX(gross_sales_mln) FROM channel_sales)
+;
+```
+
+![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/e8079122-2417-4e78-811a-6455096d6ed7)
+
+~ Retailer channel generated more sales in 2021 with 73.23%
+
+**Question 10**
+
+Get the Top 3 products in each division that have a high total_sold_quantity in the fiscal_year 2021?
+The final output contains these fields, division product_code product total_sold_quantity rank_order
+
+```sql
+WITH division_sales AS(
+SELECT
+dim_product.division,
+dim_product.product_code,
+dim_product.product,
+SUM(fact_sales.sold_quantity) AS total_sold_quantity,
+RANK() OVER( PARTITION BY division ORDER BY SUM(fact_sales.sold_quantity) DESC) AS rank_order
+FROM `dim_product` AS dim_product
+INNER JOIN `fact_sales_monthly` AS fact_sales
+ON dim_product.product_code=fact_sales.product_code
+WHERE
+fact_sales.fiscal_year=2021
+GROUP BY 
+dim_product.division,
+dim_product.product_code,
+dim_product.product
+)
+SELECT 
+division,
+product_code,
+product,
+total_sold_quantity,
+rank_order
+FROM division_sales
+WHERE rank_order <=3 
+GROUP BY 
+division,
+product_code,
+product ;
+```
+
+![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/7d035ffc-02e5-4a15-b729-a78a6cd3cb72)
+
+~ N & S division recorded high gross sales among the divisions with AQ PEn Drive 2 IN 1 generating the highest sales.
+
+## Recommedations and Insights
