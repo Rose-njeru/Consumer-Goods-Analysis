@@ -1,7 +1,9 @@
 # Consumer-Goods-Analysis
 Conducting Analysis in SQL and visualization in Excel  to represent executive management in the consumer goods domain on the performance of the store.
 ## What does the store want to achieve
-+Maintain and increase the number of customers
++ Maintain and increase the number of customers
++ Drive revenue growth
++ Pricing strategy to maximize profits
 
 ## The Tables
 1. dim_customer: contains customer-related data
@@ -329,4 +331,6 @@ product ;
 
 ~ N & S division recorded high gross sales among the divisions, with AQ PEn Drive 2 IN 1 generating the highest sales.
 
-## Recommedations and Insights
+##  Insights and Recommendations 
+Insights and recommendations are provided through PowerPoint presentation
+[Link](https://1drv.ms/p/s!Ap-2CUfBmWLpgV-mQYWkdvM5VS2X)
