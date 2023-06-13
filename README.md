@@ -1,5 +1,7 @@
 # Consumer-Goods-Analysis
-Conducting Analysis in SQL  to represent to executive management in the consumer goods domain on the performance of the store.
+Conducting Analysis in SQL and visualization in Excel  to represent executive management in the consumer goods domain on the performance of the store.
+## What does the store want to achieve
++Maintain and increase the number of customers
 
 ## The Tables
 1. dim_customer: contains customer-related data
@@ -13,23 +15,23 @@ Conducting Analysis in SQL  to represent to executive management in the consumer
 + customer_code: The 'customer_code' column features unique identification codes for every customer in the dataset. These codes can be used to track a customer's sales history, demographic information, and other relevant details.
 + customer: The 'customer' column lists the names of customers.
 + platform: The 'platform' column identifies the means by which a company's products or services are sold. "Brick & Mortar" represents the physical store/location, and "E-Commerce" represents online platforms.
-+ channel: The 'channel' column reflects the distribution methods used to sell a product. These methods include "Retailers", "Direct", and "Distributors". Retailers 				refer to physical or online stores that sell products to consumers. Direct sales refer to sales made directly to consumers through a company's website or other direct means, and distributors refer to intermediaries or middlemen between the manufacturer and retailer or end consumers.
++ channel: The 'channel' column reflects the distribution methods used to sell a product. These methods include "Retailers", "Direct," and "Distributors." Retailers refer to physical or online stores that sell products to consumers. Direct sales refer to sales made directly to consumers through a company's website or other direct means, and distributors refer to intermediaries or middlemen between the manufacturer and retailer or end consumers.
 +  market: The 'market' column lists the countries in which the customer is located.
 + region: The 'region' column categorizes countries according to their geographic location, including "APAC" (Asia Pacific), "EU" (Europe), "NA" (North America), and  "LATAM" (Latin America).
 + sub_zone: "The 'sub_zone' column further breaks down the regions into sub-regions, such as "India", "ROA" (Rest of Asia), "ANZ" (Australia and New Zealand), "SE"  Southeast Asia), "NE" (Northeast Asia), "NA" (North America), and "LATAM" (Latin America)."
 
 **Column Description for dim_product table**
 + product_code: The 'product_code' column features unique identification codes for each product, serving as a means to track and distinguish individual products within a database or system.
-+ division: The 'division' column categorizes products into groups such as "P & A" (Peripherals and Accessories), "N & S" (Network and Storage) and "PC" (Personal Computer).
-+ segment: The 'segment' column categorizes products further within the division, such as "Peripherals" (keyboard, mouse, monitor, etc.), "Accessories" (cases, cooling solutions, power supplies), "Notebook" (laptops), "Desktop" (desktops, all-in-one PCs, etc), "Storage" (hard disks, SSDs, external storage), and "Networking" (routers, switches, modems, etc.).
++ division: The 'division' column categorizes products into groups such as "P & A" (Peripherals and Accessories), "N & S" (Network and Storage), and "PC" (Personal Computer).
++ segment: The 'segment' column categorizes products further within the division, such as "Peripherals" (keyboard, mouse, monitor, etc.), "Accessories" (cases, cooling solutions, power supplies), "Notebook" (laptops), "Desktop" (desktops, all-in-one PCs, etc.), "Storage" (hard disks, SSDs, external storage), and "Networking" (routers, switches, modems, etc.).
 + category: The 'category' column classifies products into specific subcategories within the segment.
-+ product: The 'product' column lists the names of individual products, corresponding to the unique identification codes found in the 'product_code' column.
-+ variant: The "variant" column classifies products according to their features, prices, and other characteristics. The column includes variants such as "Standard", "Plus", "Premium" that represent different versions of the same product.
++ product: The 'product' column lists the names of individual products corresponding to the unique identification codes found in the 'product_code' column.
++ variant: The "variant" column classifies products according to their features, prices, and other characteristics. The column includes variants such as "Standard," "Plus," and "Premium" that represent different versions of the same product.
 
 **Column Description for fact_gross_price table**
 + product_code: The 'product_code' column features unique identification codes for each product.
-+ fiscal_year: The 'fiscal_year' column contains the fiscal period in which the product sale was recorded. A fiscal year is a 12-month period that is used for accounting purposes and often differs from the calendar year. For Atliq Hardware, the fiscal year starts in September. The data available in this column covers the 	fiscal years 2020 and 2021.
-+ gross_price: The 'gross_price' column holds the initial price of a product, prior to any reductions or taxes. It is the original selling price of the product.
++ fiscal_year: The 'fiscal_year' column contains the fiscal period in which the product sale was recorded. A fiscal year is a 12-month period used for accounting purposes and often differs from the calendar year. For Atliq Hardware, the fiscal year starts in September. The data available in this column covers the fiscal years 2020 and 2021.
++ gross_price: The 'gross_price' column holds the initial price of a product prior to any reductions or taxes. It is the original selling price of the product.
 
 **Column Description for fact_manufacturing_cost**
 + product_code: The 'product_code' column features unique identification codes for each product
@@ -44,18 +46,18 @@ Conducting Analysis in SQL  to represent to executive management in the consumer
 **Column Description for fact_sales_monthly**
 + date: The "date" column contains the date when the sale of a product was made, in a monthly format for 2020 and 2021 fiscal years. This information can be used to understand the sales performance of products over time.
 + product_code: The "product_code" column contains a unique identification code for each product. This code is used to track and differentiate individual products within a database or system.
-+ customer_code: The 'customer_code' column features unique identification codes for every customer in the dataset. These codes can be used to track a customer's sales history, demographic information, and other relevant details. For example, the codes could look like '70002017', '90005160', and '80007195' respectively.
-+ sold_quantity: The "sold_quantity" column contains the number of units of a product that were sold. This information can be used to understand the sales volume ofproducts and to compare the sales volume of different products or variants.
++ customer_code: The 'customer_code' column features unique identification codes for every customer in the dataset. These codes can be used to track a customer's sales history, demographic information, and other relevant details. For example, the codes could look like '70002017', '90005160', and '80007195', respectively.
++ sold_quantity: The "sold_quantity" column contains the number of units of a product that were sold. This information can be used to understand the sales volume of products and to compare the sales volume of different products or variants.
 + fiscal_year: The "fiscal_year" column holds the fiscal period when the sale of a product occurred.
 
 ## Data Cleaning 
 There  were no inconsistencies in the data.
 ## Data Analysis
-The analysis was based on the questions provided,and observations noted
+The analysis was based on the questions provided, and observations noted
 
 **Question One**
 
-Provide the list of markets in which customer "Atliq Exclusive" operates its business in the APAC region.
+Provide the list of markets where customer "Atliq Exclusive" operates its business in the APAC region.
 ```sql
 SELECT market
 FROM `dim_customer`
@@ -100,9 +102,9 @@ ORDER BY product_count DESC;
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/35a197e8-1da9-4581-b497-e4f842184769)
 
 
-~ The Notebook segment had a high unique product count  of 129  unique products indicates that the company has a significant focus on notebook-related products. This could imply that notebooks are a popular product category, and the company invests resources in developing a diverse range of notebook products to cater to various customer preferences. It suggests that the company recognizes the demand and potential revenue generation from this segment.
+~ The Notebook segment had a high unique product count  of 129  unique products, indicating the company has a significant focus on notebook-related products. This could imply that notebooks are a popular product category, and the company invests resources in developing a diverse range of notebook products to cater to various customer preferences. It suggests that the company recognizes this segment's demand and potential revenue generation.
 
-~ The networking  segment with the least number of unique products is networking. This suggests that the company has relatively fewer offerings in the networking product category. It could be due to various reasons, such as lower market demand for networking products compared to other segments or the company's strategic decision to prioritize investment and resources in other product categories.
+~ The networking  segment with the least number of unique products is networking. This suggests that the company has relatively fewer offerings in the networking product category. It could be due to various reasons, such as lower market demand for networking products than other segments or the company's strategic decision to prioritize investment and resources in other product categories.
 
 **Question Four**
 
@@ -160,7 +162,7 @@ fact_manufacture.manufacturing_cost DESC;
 
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/cae386f2-6ba7-4ab4-ae67-85a4d6b4ea8f)
 
-~ AQ HOME Allin1 Gen 2 had the highest manufacturing cost of 240.5364 while AQ Master wired x1 Ms had the least manufacturing cost of 0.892.
+~ AQ HOME Allin1 Gen 2 had the highest manufacturing cost of 240.5364 while AQ Master wired x1 Ms had the lowest cost of 0.892.
 
 **Question Six**
 
@@ -218,11 +220,11 @@ year;
 
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/7be6a79c-fab4-4965-8351-21ff2d719365)
 
-~ The Gross Sales Amount for "Atliq Exclusive" shows variations across different months and years. There are noticeable peaks and dips in sales throughout the analyzed period, indicating seasonal patterns or other factors influencing customer demand.
+~ The Gross Sales Amount for "Atliq Exclusive" shows variations across months and years. Noticeably peaks and dips in sales throughout the analyzed period indicate seasonal patterns or other factors influencing customer demand.
 
 ~ High-Performing Months: November 2020 had the highest Gross Sales Amount of 20.46 million. Other notable high-performing months include October 2020 (13.22 million), September 2020 (12.35 million), and July 2021 (12.09 million). These months experienced significant sales volumes and can be considered high-demand periods.
 
-~ Low-Performing Months: March 2020 had the lowest Gross Sales Amount of 0.38 million, followed by April 2020 (0.4 million) and May 2020 (0.78 million). These months likely experienced lower customer demand or other factors affecting sales and the impactof the Covid-19 virus
+~ Low-Performing Months: March 2020 had the lowest Gross Sales Amount of 0.38 million, followed by April 2020 (0.4 million) and May 2020 (0.78 million). These months likely experienced lower customer demand or other factors affecting sales and the impact of the Covid-19 virus.
 
 ~ Yearly Trends: Gross Sales Amount for "Atliq Exclusive" increased from 2019 to 2020, with higher sales volumes observed in 2020 compared to 2019. However, there is a slight dip in sales in the first quarter of 2021 compared to the peak months in 2020.
 
@@ -246,15 +248,15 @@ ORDER BY total_sold_quantity DESC;
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/5ecc521d-aa38-4c31-bedd-832be653048b)
 
 
-~ The first quarter of recorded high quantity of goods sold followed by the fourth quarter.
+~ The first quarter recorded a high quantity of goods sold, followed by the fourth quarter.
 
-+ the QUARTER() function is used to derive the quarter from the date column. Since the fiscal year for Atliq Hardware starts from September, 
++ The QUARTER() function derives the quarter from the date column. Since the fiscal year for Atliq Hardware starts in September, 
 we need to subtract 9 months from the date to align it with the calendar year
 
 **Question 9**
 
-Which channel helped to bring more gross sales in the fiscal year 2021 and the percentage of contribution? 
-The final output contains these fields, channel gross_sales_mln percentage
+Which channel helped to bring more gross sales in the fiscal year 2021, and what was the percentage of contribution? 
+The final output contains these fields, channel gross_sales_mln percentage.
 
 +  gross_sales_mln = gross_price * sold_quantity
 
@@ -286,12 +288,12 @@ WHERE gross_sales_mln = (SELECT MAX(gross_sales_mln) FROM channel_sales)
 
 ~ Retailer channel generated more sales in 2021 with 73.23%
 
-**Question 10**
+**Question Ten**
 
-Get the Top 3 products in each division that have a high total_sold_quantity in the fiscal_year 2021?
+Get the Top 3 products in each division with a high total_sold_quantity in the fiscal_year 2021.
 The final output contains these fields, division product_code product total_sold_quantity rank_order
 
-```sql
+```SQL
 WITH division_sales AS(
 SELECT
 dim_product.division,
@@ -325,6 +327,6 @@ product ;
 
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/7d035ffc-02e5-4a15-b729-a78a6cd3cb72)
 
-~ N & S division recorded high gross sales among the divisions with AQ PEn Drive 2 IN 1 generating the highest sales.
+~ N & S division recorded high gross sales among the divisions, with AQ PEn Drive 2 IN 1 generating the highest sales.
 
 ## Recommedations and Insights
