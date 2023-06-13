@@ -97,7 +97,12 @@ ORDER BY product_count DESC;
 
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/5a585b4e-6f82-46fe-aa72-e6e4d7c2bdc9)
 
-~ The Notebook segment had a high unique product count  of 129 followed by Accessories with a count of 116.Networking had the least count of only 9 products.
+![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/35a197e8-1da9-4581-b497-e4f842184769)
+
+
+~ The Notebook segment had a high unique product count  of 129  unique products indicates that the company has a significant focus on notebook-related products. This could imply that notebooks are a popular product category, and the company invests resources in developing a diverse range of notebook products to cater to various customer preferences. It suggests that the company recognizes the demand and potential revenue generation from this segment.
+
+~ The networking  segment with the least number of unique products is networking. This suggests that the company has relatively fewer offerings in the networking product category. It could be due to various reasons, such as lower market demand for networking products compared to other segments or the company's strategic decision to prioritize investment and resources in other product categories.
 
 **Question Four**
 
@@ -118,7 +123,13 @@ ORDER BY difference DESC;
 
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/892d25bc-86f5-4ab4-9778-728768dcef8e)
 
-~ The Accessories segment had the highest increase between 2021 and 2020  fiscal years by registering a product sale diffrece of 34.
+![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/a0c9782c-b76d-469a-97ea-707e2fc78979)
+
+~ The accessories segment had the highest difference in unique product counts between 2020 and 2021, with a difference of 34. This indicates that the company focused on expanding and introducing a larger variety of accessories in 2021 compared to the previous year. The significant increase in unique products within the accessories segment suggests that the company recognized the potential for revenue growth in this category and invested resources to meet customer demands.
+
+~ Notebook and Peripherals Segments: Both the notebook and peripherals segments had the same difference in unique product counts, with an increase of 16 between 2020 and 2021. This implies that the company also dedicated efforts to expanding its notebook and peripherals offerings in the market. The increase in unique products within these segments suggests a strategic focus on catering to customer preferences and capturing a larger market share in these product categories.
+
+~ The networking segment had the smallest difference in unique product counts, with an increase of 3 between 2020 and 2021. Although the increase is relatively smaller compared to other segments, it still indicates some level of investment in expanding the company's networking product offerings. This suggests a strategic approach to cater to the networking market and potentially capture additional revenue opportunities.
 
 **Question Five**
 
