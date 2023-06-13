@@ -216,9 +216,16 @@ year;
 
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/9287be23-6f1d-4102-9473-89e8e13012d1)
 
-![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/4cf8b017-de73-4518-84cc-f0b1e813319b)
+![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/7be6a79c-fab4-4965-8351-21ff2d719365)
 
-~ Atliq Exclusive 2009 recorded high sales in November and low sales in September as they began their operations. In 2020 it recorded high sales in the 4th quarter of the year, with high sales in November and low in March. In 2021 it recorded high sales in January and the lowest in August.
+~ The Gross Sales Amount for "Atliq Exclusive" shows variations across different months and years. There are noticeable peaks and dips in sales throughout the analyzed period, indicating seasonal patterns or other factors influencing customer demand.
+
+~ High-Performing Months: November 2020 had the highest Gross Sales Amount of 20.46 million. Other notable high-performing months include October 2020 (13.22 million), September 2020 (12.35 million), and July 2021 (12.09 million). These months experienced significant sales volumes and can be considered high-demand periods.
+
+~ Low-Performing Months: March 2020 had the lowest Gross Sales Amount of 0.38 million, followed by April 2020 (0.4 million) and May 2020 (0.78 million). These months likely experienced lower customer demand or other factors affecting sales and the impactof the Covid-19 virus
+
+~ Yearly Trends: Gross Sales Amount for "Atliq Exclusive" increased from 2019 to 2020, with higher sales volumes observed in 2020 compared to 2019. However, there is a slight dip in sales in the first quarter of 2021 compared to the peak months in 2020.
+
 
 **Question Eight**
 
