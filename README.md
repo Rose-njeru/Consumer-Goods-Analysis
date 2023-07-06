@@ -1,9 +1,30 @@
 # Consumer-Goods-Analysis
 Conducting Analysis in SQL and visualization in Excel  to represent executive management in the consumer goods domain on the performance of the store.
-## What does the store want to achieve
-+ Maintain and increase the number of customers
-+ Drive revenue growth
-+ Pricing strategy to maximize profits
+# Functions Used
++ SELECT
++ FROM
++ WHERE
++ GROUP BY
++ ORDER BY
++ AGGREGATE FUNCTIONS: SUM, AVG, MAX,MIN, COUNT
++ CASE WHEN
++ INNER JOINS 
++ SUBQUERIES
++ CTE'S
++ WINDOW FUNCTION: RANK
++ OVER
+
+
+
+
+
+
+
+## Guiding Questions
+
++ How will the store Maintain and increase the number of customers?
++ The strategies that the store will use to drive revenue growth?
++ Can you explain the store's specific tactics or approaches to implement its pricing strategy and achieve optimal profit margins effectively?
 
 ## The Tables
 1. dim_customer: contains customer-related data
@@ -16,14 +37,14 @@ Conducting Analysis in SQL and visualization in Excel  to represent executive ma
 **Column Description for dim_customer table**
 + customer_code: The 'customer_code' column features unique identification codes for every customer in the dataset. These codes can be used to track a customer's sales history, demographic information, and other relevant details.
 + customer: The 'customer' column lists the names of customers.
-+ platform: The 'platform' column identifies the means by which a company's products or services are sold. "Brick & Mortar" represents the physical store/location, and "E-Commerce" represents online platforms.
++ Platform: The 'platform' column identifies how a company's products or services are sold. "Brick & Mortar" represents the physical store/location, and "E-Commerce" represents online platforms.
 + channel: The 'channel' column reflects the distribution methods used to sell a product. These methods include "Retailers", "Direct," and "Distributors." Retailers refer to physical or online stores that sell products to consumers. Direct sales refer to sales made directly to consumers through a company's website or other direct means, and distributors refer to intermediaries or middlemen between the manufacturer and retailer or end consumers.
 +  market: The 'market' column lists the countries in which the customer is located.
 + region: The 'region' column categorizes countries according to their geographic location, including "APAC" (Asia Pacific), "EU" (Europe), "NA" (North America), and  "LATAM" (Latin America).
 + sub_zone: "The 'sub_zone' column further breaks down the regions into sub-regions, such as "India", "ROA" (Rest of Asia), "ANZ" (Australia and New Zealand), "SE"  Southeast Asia), "NE" (Northeast Asia), "NA" (North America), and "LATAM" (Latin America)."
 
 **Column Description for dim_product table**
-+ product_code: The 'product_code' column features unique identification codes for each product, serving as a means to track and distinguish individual products within a database or system.
++ product_code: The 'product_code' column features unique identification codes for each product, tracking and distinguishing individual products within a database or system.
 + division: The 'division' column categorizes products into groups such as "P & A" (Peripherals and Accessories), "N & S" (Network and Storage), and "PC" (Personal Computer).
 + segment: The 'segment' column categorizes products further within the division, such as "Peripherals" (keyboard, mouse, monitor, etc.), "Accessories" (cases, cooling solutions, power supplies), "Notebook" (laptops), "Desktop" (desktops, all-in-one PCs, etc.), "Storage" (hard disks, SSDs, external storage), and "Networking" (routers, switches, modems, etc.).
 + category: The 'category' column classifies products into specific subcategories within the segment.
@@ -41,14 +62,14 @@ Conducting Analysis in SQL and visualization in Excel  to represent executive ma
 + manufacturing_cost: The "manufacturing_cost" column contains the total cost incurred for the production of a product. This cost includes direct costs like raw materials, labor, and overhead expenses that are directly associated with the production process.
 
 **Column Description for fact_pre_invoice_deductions**
-+ customer_code: The 'customer_code' column features unique identification codes for every customer in the dataset. These codes can be used to track a customer's sales history, demographic information, and other relevant details. For example, the codes could look like '70002017', '90005160', and '80007195' respectively.
++ customer_code: The 'customer_code' column features unique identification codes for every customer in the dataset. These codes can track a customer's sales history, demographic information, and other relevant details. For example, the codes could look like '70002017', '90005160', and '80007195'.
 + fiscal_year: The "fiscal_year" column holds the fiscal period when the sale of a product occurred.
-+ pre_invoice_discount_pct: The "pre_invoice_discount_pct" column contains the percentage of pre-invoice deductions for each product. Pre-invoice deductions are discounts that are applied to the gross price of a product before the invoice is generated, and typically applied to large orders or long-term contracts.
++ pre_invoice_discount_pct: The "pre_invoice_discount_pct" column contains each product's percentage of pre-invoice deductions. Pre-invoice deductions are discounts that are applied to the gross price of a product before the invoice is generated and are typically applied to large orders or long-term contracts.
 
 **Column Description for fact_sales_monthly**
-+ date: The "date" column contains the date when the sale of a product was made, in a monthly format for 2020 and 2021 fiscal years. This information can be used to understand the sales performance of products over time.
-+ product_code: The "product_code" column contains a unique identification code for each product. This code is used to track and differentiate individual products within a database or system.
-+ customer_code: The 'customer_code' column features unique identification codes for every customer in the dataset. These codes can be used to track a customer's sales history, demographic information, and other relevant details. For example, the codes could look like '70002017', '90005160', and '80007195', respectively.
++ date: The "date" column contains the date when a product was sold in a monthly format for the 2020 and 2021 fiscal years. This information can be used to understand the sales performance of products over time.
++ product_code: The "product_code" column contains a unique identification code for each product. This code tracks and differentiates individual products within a database or system.
++ customer_code: The 'customer_code' column features unique identification codes for every customer in the dataset. These codes can track a customer's sales history, demographic information, and other relevant details. For example, the codes could look like '70002017', '90005160', and '80007195'.
 + sold_quantity: The "sold_quantity" column contains the number of units of a product that were sold. This information can be used to understand the sales volume of products and to compare the sales volume of different products or variants.
 + fiscal_year: The "fiscal_year" column holds the fiscal period when the sale of a product occurred.
 
@@ -190,15 +211,13 @@ LIMIT 5;
 
 ![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/09ab3263-713e-48ee-9d83-45d003c39bb5)
 
-![image](https://github.com/Rose-njeru/Consumer-Goods-Analysis/assets/92436079/1046022d-9b1e-4d15-9a26-5ef1807984ed)
 
-
-~ Flipkart customer received has the highest average discount of 31%,Viveks,Croma,Ezone received an average discount of 30% while Amazon received 29% discount.
+~ Flipkart customers received the highest average discount of 31%, Viveks, Croma, and Ezone received an average discount of 30%, while Amazon received a 29% discount.
 
 **Question Seven**
 
 Get the complete report of the Gross sales amount for the customer “Atliq Exclusive” for each month. 
-This analysis helps to get an idea of low and high-performing months and take strategic decisions.
+This analysis helps to get an idea of low and high-performing months and make strategic decisions.
 The final report contains these columns: Month Year Gross sales Amount
 + Gross sales Amount = gross_price * sold_quantity
 ``` sql
@@ -233,7 +252,7 @@ year;
 
 **Question Eight**
 
-In which quarter of 2020, got the maximum total_sold_quantity? 
+In which quarter of 2020 got the maximum total_sold_quantity? 
 The final output contains these fields sorted by the total_sold_quantity, Quarter total_sold_quantity
 ```sql
 SELECT
